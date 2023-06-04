@@ -3,6 +3,7 @@ package netstack
 import (
 	"bytes"
 	"errors"
+
 	"github.com/dismantl/gvisor/pkg/bufferv2"
 	"github.com/dismantl/gvisor/pkg/tcpip"
 	"github.com/dismantl/gvisor/pkg/tcpip/checksum"
@@ -127,7 +128,7 @@ func ProcessICMP(nstack *stack.Stack, pkt stack.PacketBufferPtr) {
 		localAddressBroadcast := pkt.NetworkPacketInfo.LocalAddressBroadcast
 
 		// It's possible that a raw socket expects to receive this.
-		pkt = stack.PacketBufferPtr{}
+		pkt = nil
 		_ = pkt // Suppress unused variable warning.
 
 		// Take the base of the incoming request IP header but replace the options.
@@ -143,7 +144,7 @@ func ProcessICMP(nstack *stack.Stack, pkt stack.PacketBufferPtr) {
 		// or multicast address).
 		localAddr := ipHdr.DestinationAddress()
 		if localAddressBroadcast || header.IsV4MulticastAddress(localAddr) {
-			localAddr = ""
+			localAddr = tcpip.Address{}
 		}
 
 		r, err := nstack.FindRoute(1, localAddr, ipHdr.SourceAddress(), ipv4.ProtocolNumber, false /* multicastLoop */)

@@ -1,7 +1,8 @@
 package netstack
 
 import (
-	"github.com/hashicorp/yamux"
+	"io"
+
 	"github.com/dismantl/gvisor/pkg/tcpip/adapters/gonet"
 	"github.com/dismantl/gvisor/pkg/tcpip/header"
 	"github.com/dismantl/gvisor/pkg/tcpip/stack"
@@ -11,8 +12,8 @@ import (
 	"github.com/dismantl/gvisor/pkg/waiter"
 	"github.com/dismantl/ligolo-ng/pkg/protocol"
 	"github.com/dismantl/ligolo-ng/pkg/relay"
+	"github.com/hashicorp/yamux"
 	"github.com/sirupsen/logrus"
-	"io"
 )
 
 // handleICMP process incoming ICMP packets and, depending on the target host status, respond a ICMP ECHO Reply
@@ -84,7 +85,7 @@ func HandlePacket(nstack *stack.Stack, localConn TunConn, yamuxConn *yamux.Sessi
 		return
 	}
 
-	if endpointID.LocalAddress.To4() != "" {
+	if endpointID.LocalAddress.To4().String() != "" {
 		protonet = protocol.Networkv4
 	} else {
 		protonet = protocol.Networkv6
