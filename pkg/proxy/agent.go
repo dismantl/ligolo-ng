@@ -3,7 +3,7 @@ package proxy
 import (
 	"fmt"
 	"github.com/hashicorp/yamux"
-	"github.com/nicocha30/ligolo-ng/pkg/protocol"
+	"github.com/dismantl/ligolo-ng/pkg/protocol"
 	"net"
 )
 

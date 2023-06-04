@@ -5,7 +5,7 @@
 An advanced, yet simple, tunneling tool that uses a TUN interface.
 
 [![GPLv3](https://img.shields.io/badge/License-GPLv3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Go Report](https://goreportcard.com/badge/github.com/nicocha30/ligolo-ng)](https://goreportcard.com/report/github.com/nicocha30/ligolo-ng)
+[![Go Report](https://goreportcard.com/badge/github.com/dismantl/ligolo-ng)](https://goreportcard.com/report/github.com/dismantl/ligolo-ng)
 
 ## Table of Contents
 
@@ -73,7 +73,7 @@ This allows running tools like *nmap* without the use of *proxychains* (simpler 
 
 ### Precompiled binaries
 
-Precompiled binaries (Windows/Linux/macOS) are available on the [Release page](https://github.com/nicocha30/ligolo-ng/releases).
+Precompiled binaries (Windows/Linux/macOS) are available on the [Release page](https://github.com/dismantl/ligolo-ng/releases).
 
 ### Building Ligolo-ng
 Building *ligolo-ng* (Go >= 1.17 is required):
